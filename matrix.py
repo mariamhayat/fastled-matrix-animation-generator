@@ -5,7 +5,13 @@ im = Image.open('image.gif')
 
 #variable to hold frame rate/speed of animation
 delay = 350
+
+#number of LEDs in panel
+NUM_LEDS = 128
+
 print("\n** Analysing image **\n")
+
+
 
 # Display image format, size, colour mode
 print("Format:", im.format, "\nWidth:", im.width, "\nHeight:", im.height, "\nMode:", im.mode)
@@ -34,7 +40,7 @@ for z in range(frames):
 
             # Get RGB values of each pixel
             r, g, b = rgb_im.getpixel((x, y))
-            if(i<128):
+            if(i<NUM_LEDS):
                 file1.write("leds["+str(i)+"] = CRGB(" + str(r) + "," + str(g) + "," + str(b) +  ")" + ";\n")
                 i+=1
 
