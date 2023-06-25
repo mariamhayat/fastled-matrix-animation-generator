@@ -21,8 +21,6 @@ NUM_LEDS = 128
 
 Firstly, we need a GIF file to work with. Like mentioned above, it should ideally be the same resolution as the frame. The code has measures in place to check for that though but still.
 
-<img height="400" width="400" src="assets/demos/demo_safesync.png" alt="SafeSync IoT Dashboard: A full-fledged Employee Management and Workspace Health and Safety ensuring Solution"
-
 "delay" is the framerate the of the animation. Higher the number, slower the animation. 
 "NUM_LEDS" is the number of the LEDs in the strip. 
 
