@@ -21,12 +21,54 @@ NUM_LEDS = 128
 
 Firstly, we need a GIF file to work with. Like mentioned above, it should ideally be the same resolution as the frame. The code has measures in place to check for that though but still.
 
-
-![cat-export](https://github.com/suramyadas01/fastled-matrix-animation-generator/assets/41816183/71282ce9-4f1b-4208-a9c8-13627591488d)
+<img height="400" width="400" src="assets/demos/demo_safesync.png" alt="SafeSync IoT Dashboard: A full-fledged Employee Management and Workspace Health and Safety ensuring Solution"
 
 "delay" is the framerate the of the animation. Higher the number, slower the animation. 
 "NUM_LEDS" is the number of the LEDs in the strip. 
 
-It is important to understand and compare the layout of the panel and the GIF. The panel should ideally have the first LED on the top left corner. 
+<div align=center>
+<img height="200" width="400" src="assets/cat-export.gif" alt="Cat GIF">
+</div>
 
-![image](https://github.com/suramyadas01/fastled-matrix-animation-generator/assets/41816183/68db09ac-0e12-48ba-a6aa-f8553086e671)
+It is important to understand and compare the layout of the panel and the GIF. The panel should ideally have the first LED on the top left corner. If not, necessary modifications must be made to accomodate the changes. 
+
+NOTE: Currently there is a dependency on the calibrate() that is implemented on the Arduino end. The plan is to include that functionality within this code itself. 
+
+Once the code runs, we should be left with a text file that looks something like
+
+```cpp
+leds[0] = CRGB(255, 255, 255);
+leds[1] = CRGB(255, 255, 255);
+...
+...
+leds[n] = CRGB(255, 255, 255);
+calibrate();
+FastLED.show();
+delay(400);
+
+leds[0] = CRGB(255, 255, 255);
+leds[1] = CRGB(255, 255, 255);
+...
+...
+leds[n] = CRGB(255, 255, 255);
+calibrate();
+FastLED.show();
+delay(400);
+```
+
+This snippet can then copy pasted in the Arduino code and it should run automatically. Here, every block separated by a delay() is a different frame. If everything works correctly, you should have the same animation running on the panel like this. 
+
+<div align=center>
+<img height="200" src="assets/final.jpeg" alt="Cat GIF">
+</div>
+
+That's it so far.
+
+## Future Plans
+* Include an UI wrapper for this functionality. 💻
+* Remove the calibrate() dependency.
+* Allow direct streaming of animations to the controller.
+
+Hope this helps! If you would like to add anything to this repo that you think might be cool, please let me know. 
+
+Check out the project I made with this here: 
