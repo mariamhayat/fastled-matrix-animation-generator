@@ -21,7 +21,7 @@ NUM_LEDS = 128
 
 Firstly, we need a GIF file to work with. Like mentioned above, it should ideally be the same resolution as the frame. The code has measures in place to check for that though but still.
 
-"delay" is the framerate the of the animation. Higher the number, slower the animation. 
+"delay" is the framerate of the animation. Higher the number, slower the animation. 
 "NUM_LEDS" is the number of the LEDs in the strip. 
 
 <div align=center>
