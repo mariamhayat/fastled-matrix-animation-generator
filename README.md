@@ -69,4 +69,4 @@ That's it so far.
 
 Hope this helps! If you would like to add anything to this repo that you think might be cool, please let me know. 
 
-Check out the project I made with this here: 
+Check out the project I made with this [here](https://medium.com/@suramyadas2000/how-i-made-a-2d-led-matrix-and-made-it-play-animations-i-liked-e693e9a4c220)
