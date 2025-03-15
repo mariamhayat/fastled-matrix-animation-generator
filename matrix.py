@@ -44,7 +44,7 @@ for z in range(frames):
                 file1.write("leds["+str(i)+"] = CRGB(" + str(r) + "," + str(g) + "," + str(b) +  ")" + ";\n")
                 i+=1
 
-    file1.write("calibrate();\nFastLED.show();\ndelay(" + delay + ");\n")
+    file1.write("calibrate();\nFastLED.show();\ndelay(" + str(delay) + ");\n")
     #calibrate() is a fn on the Arduino side at the moment that checks for layout pattern of the LED Strip. More details in README file.
     #calibrate() snippet is added as a separate file under calibrate folder 
 file1.close()
