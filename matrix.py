@@ -1,13 +1,13 @@
 from PIL import Image, ImageFilter
 
 # Open image file
-im = Image.open('image.gif')
+im = Image.open('heart.gif')
 
 #variable to hold frame rate/speed of animation
 delay = 350
 
 #number of LEDs in panel
-NUM_LEDS = 128
+NUM_LEDS = 80
 
 print("\n** Analysing image **\n")
 
@@ -34,17 +34,28 @@ for z in range(frames):
   # Go to frame
     im.seek(z)
     print("Frame: ", im.tell())
+    zig = False # We need to snake per row (go backwards)
 
-    for y in range(im.width):
-        for x in range(im.height):
+    for y in range(im.height):
+        if not zig:
+            for x in range(im.width):
+                # Get RGB values of each pixel
+                r, g, b = rgb_im.getpixel((x, y))
+                if(i<NUM_LEDS):
+                    linePrint = "leds["+str(i)+"] = CRGB("+ str(r) + "," + str(g) + "," + str(b) +  ");\n"
+                    file1.write(linePrint)
+                    i+=1
+        else:
+            for x in range(im.width-1,-1,-1):
+                # Get RGB values of each pixel
+                r, g, b = rgb_im.getpixel((x, y))
+                if(i<NUM_LEDS):
+                    linePrint = "leds["+str(i)+"] = CRGB("+ str(r) + "," + str(g) + "," + str(b) +  ");\n"
+                    file1.write(linePrint)
+                    i+=1
+        zig = not zig
 
-            # Get RGB values of each pixel
-            r, g, b = rgb_im.getpixel((x, y))
-            if(i<NUM_LEDS):
-                file1.write("leds["+str(i)+"] = CRGB(" + str(r) + "," + str(g) + "," + str(b) +  ")" + ";\n")
-                i+=1
-
-    file1.write("calibrate();\nFastLED.show();\ndelay(" + str(delay) + ");\n")
+    file1.write("FastLED.show();\ndelay(" + str(delay) + ");\n")
     #calibrate() is a fn on the Arduino side at the moment that checks for layout pattern of the LED Strip. More details in README file.
     #calibrate() snippet is added as a separate file under calibrate folder 
 file1.close()
